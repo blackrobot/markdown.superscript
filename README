@@ -15,13 +15,13 @@ Examples:
     >>> md = markdown.Markdown(extensions=['superscript'])
     >>> md.convert('This is a reference to a footnote^1^.')
     u'<p>This is a reference to a footnote<sup>1</sup>.</p>'
-    
+
     >>> md.convert('This is scientific notation: 6.02 x 10^23^')
     u'<p>This is scientific notation: 6.02 x 10<sup>23</sup></p>'
-    
+
     >>> md.convert('This is scientific notation: 6.02 x 10^23. Note lack of second carat.')
     u'<p>This is scientific notation: 6.02 x 10^23. Note lack of second carat.</p>'
-    
+
     >>> md.convert('Scientific notation: 6.02 x 10^23. Add carat at end of sentence.^')
     u'<p>Scientific notation: 6.02 x 10<sup>23. Add a carat at the end of sentence.</sup>.</p>'
 
