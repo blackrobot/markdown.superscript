@@ -34,9 +34,7 @@ class SuperscriptPattern(markdown.inlinepatterns.Pattern):
     """ Return a superscript Element (`word^2^`). """
     def handleMatch(self, m):
         supr = m.group(3)
-        
         text = supr
-        
         el = markdown.etree.Element("sup")
         el.text = markdown.AtomicString(text)
         return el
