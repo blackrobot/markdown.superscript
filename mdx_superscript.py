@@ -27,6 +27,7 @@ within paragraphs will not.
 
 import markdown
 
+
 # Global Vars
 SUPERSCRIPT_RE = r'(\^)([^\^]*)\2'  # the number is a superscript^2^
 
@@ -35,7 +36,7 @@ class SuperscriptPattern(markdown.inlinepatterns.Pattern):
     def handleMatch(self, m):
         supr = m.group(3)
         text = supr
-        el = markdown.etree.Element("sup")
+        el = markdown.util.etree.Element("sup")
         el.text = markdown.AtomicString(text)
         return el
 
