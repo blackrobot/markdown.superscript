@@ -28,8 +28,8 @@ within paragraphs will not.
 import markdown
 
 
-# Global Vars
 SUPERSCRIPT_RE = r'(\^)([^\^]*)\2'  # the number is a superscript^2^
+
 
 class SuperscriptPattern(markdown.inlinepatterns.Pattern):
     """ Return a superscript Element (`word^2^`). """
@@ -37,19 +37,21 @@ class SuperscriptPattern(markdown.inlinepatterns.Pattern):
         supr = m.group(3)
         text = supr
         el = markdown.util.etree.Element("sup")
-        el.text = markdown.AtomicString(text)
+        el.text = markdown.util.AtomicString(text)
         return el
 
-class SuperscriptExtension(markdown.Extension):
-    """ Superscript Extension for Python-Markdown. """
 
+class SuperscriptExtension(markdown.extensions.Extension):
+    """ Superscript Extension for Python-Markdown. """
     def extendMarkdown(self, md, md_globals):
         """ Replace superscript with SuperscriptPattern """
         md.inlinePatterns['superscript'] = SuperscriptPattern(SUPERSCRIPT_RE, md)
 
+
 def makeExtension(configs=None):
     return SuperscriptExtension(configs=configs)
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     import doctest
     doctest.testmod()
